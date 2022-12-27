@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.IO.Ports;
 using System.Linq;
 using System.Reflection;
@@ -25,7 +26,10 @@ namespace SerialImage
             InitializeComponent();
             portNames = SerialPort.GetPortNames();
             comPortsSelect.Items.AddRange(portNames);
-            comPortsSelect.SelectedIndex = 0;
+            if (comPortsSelect.Items.Count > 0)
+            {
+                comPortsSelect.SelectedIndex = 0;
+            }
             trackBar1.Value = threshold;
             baudrateSelect.SelectedIndex = 8;
         }
@@ -46,7 +50,7 @@ namespace SerialImage
 
         private void sendBtn_Click(object sender, EventArgs e)
         {
-            byte[] imageData = new byte[128*64];
+            byte[] imageData = new byte[128 * 64];
             int index = 0;
             for (int y = 0; y < dstImageBitmap.Height; y++)
             {
@@ -57,6 +61,17 @@ namespace SerialImage
                     index++;
                 }
             }
+
+            if (toFileCheckBox.Checked)
+            {
+                var file = File.Create(openImageDialog.FileName.Remove(openImageDialog.FileName.Length - 4) + ".txt");
+                file.Write(imageData, 0, imageData.Length);
+                file.Close();
+                return;
+            }
+
+            
+            
             SendData(imageData);
        
         }

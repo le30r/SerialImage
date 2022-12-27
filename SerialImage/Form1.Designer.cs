@@ -36,6 +36,7 @@
             this.comPortsSelect = new System.Windows.Forms.ComboBox();
             this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.baudrateSelect = new System.Windows.Forms.ComboBox();
+            this.toFileCheckBox = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.srcImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.destImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
@@ -120,11 +121,22 @@
             this.baudrateSelect.Size = new System.Drawing.Size(121, 21);
             this.baudrateSelect.TabIndex = 6;
             // 
+            // toFileCheckBox
+            // 
+            this.toFileCheckBox.AutoSize = true;
+            this.toFileCheckBox.Location = new System.Drawing.Point(869, 481);
+            this.toFileCheckBox.Name = "toFileCheckBox";
+            this.toFileCheckBox.Size = new System.Drawing.Size(61, 17);
+            this.toFileCheckBox.TabIndex = 7;
+            this.toFileCheckBox.Text = "в файл";
+            this.toFileCheckBox.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1025, 508);
+            this.Controls.Add(this.toFileCheckBox);
             this.Controls.Add(this.baudrateSelect);
             this.Controls.Add(this.trackBar1);
             this.Controls.Add(this.comPortsSelect);
@@ -152,6 +164,7 @@
         private System.Windows.Forms.ComboBox comPortsSelect;
         private System.Windows.Forms.TrackBar trackBar1;
         private System.Windows.Forms.ComboBox baudrateSelect;
+        private System.Windows.Forms.CheckBox toFileCheckBox;
     }
 }
 
